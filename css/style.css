@@ -317,7 +317,7 @@ fieldset {
   margin-bottom: 14px;
 }
 
-input:checked + label::after {
+.input:checked + .label::after {
   transform: scale(1);
 }
 
