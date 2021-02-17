@@ -308,16 +308,14 @@ fieldset {
 
 .person-child-q1 p:last-of-type {
   letter-spacing: 0.038em;
-  margin-bottom: 21px;
+  margin-bottom: 25px;
 }
 
 .person fieldset {
-  /* display: flex;
-  align-items: center; */
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
-input:checked + label::after {
+.input:checked + .label::after  {
   transform: scale(1);
 }
 
@@ -325,6 +323,7 @@ input:checked + label::after {
   position: relative;
   display: inline-flex;
   align-items: center;
+  width: 100%;
   font-weight: 600;
   font-size: 14px;
   line-height: 19px;
