@@ -2,14 +2,26 @@
   font-family: "Nunito";
   font-style: normal;
   font-weight: 500;
+  font-display: swap;
   src: url("../fonts/nunito-500.woff2") format("woff2"),
     url("../fonts/nunito-500.woff") format("woff");
 }
 
 @font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/nunito-600.woff2') format('woff2'),
+    url('../fonts/nunito-600.woff') format('woff');
+}
+
+
+@font-face {
   font-family: "Nunito";
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
   src: url("../fonts/nunito-700.woff2") format("woff2"),
     url("../fonts/nunito-700.woff") format("woff");
 }
@@ -19,6 +31,7 @@
   font-family: 'IBM Plex Sans';
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
   src: url('../fonts/ibm-plex-sans-700.woff2') format('woff2'),
     url('../fonts/ibm-plex-sans-700.woff') format('woff');
 }
@@ -39,6 +52,26 @@ body {
   line-height: 25px;
   color: #FFFFFF;
   background-color: #E5E5E5;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+fieldset {
+  margin: 0;
+  margin-bottom: 14px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
 }
 
 .main,
@@ -87,14 +120,17 @@ body {
   min-height: 296px;
   margin: 0 auto;
   margin-bottom: 17px;
-  padding: 252px 84px 13px 84px;
+  padding: 252px 84px 3px 84px;
   border: 1px solid #FFFFFF;
   border-radius: 10px;
   background-image: url("../img/child.png"), url("../img/parent.png"), url("../img/bagel.svg");
   background-repeat: no-repeat;
   background-position: 77px 48px, 176px 14px, 66px 14px;
   background-size: 81px 196px, 243px 243px, 283px 248px;
+}
 
+.main fieldset {
+  display: inline-block;
 }
 
 .main__child-link,
@@ -265,24 +301,55 @@ body {
 
 /* questions */
 
-.person-child__img-q1 {
-  margin-bottom: 10px;
-  background-image: url("../img/сastle .png"), url("../img/child-run.png");
-  background-repeat: no-repeat;
-  background-position: 62px 0px, 283px 39px;
-  background-size: 235px 230px, 87px 184px;
-  background-color: transparent;
+.person-child-q1 img {
+  margin-left: -19px;
+  margin-bottom: 5px;
 }
 
 .person-child-q1 p:last-of-type {
   letter-spacing: 0.038em;
+  margin-bottom: 21px;
 }
 
-
 .person fieldset {
-  margin: 0;
+  /* display: flex;
+  align-items: center; */
   margin-bottom: 14px;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
+}
+
+input:checked + label::after {
+  transform: scale(1);
+}
+
+.person-child-q1 label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 0.06em;
+}
+
+.person-child-q1 label::before {
+  content: "";
+  flex: 0 0 20px;
+  align-self: flex-start;
+  height: 20px;
+  margin-right: 10px;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 2px solid #FFEEEE;
+}
+
+.person-child-q1 label::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #fff;
+  transform: scale(0);
 }
