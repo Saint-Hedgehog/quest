@@ -116,11 +116,13 @@ fieldset {
 }
 
 .main__choice {
+  display: flex;
+  justify-content: space-between;
   width: 432px;
   min-height: 296px;
   margin: 0 auto;
   margin-bottom: 17px;
-  padding: 252px 84px 3px 84px;
+  padding: 252px 89px 3px 84px;
   border: 1px solid #FFFFFF;
   border-radius: 10px;
   background-image: url("../img/child.png"), url("../img/parent.png"), url("../img/bagel.svg");
@@ -152,24 +154,43 @@ fieldset {
   text-decoration: none;
 }
 
-.main__child-link:hover,
+/* .main__child-link:hover,
 .main__child-link:focus,
 .main__parent-link:hover,
-.main__parent-link:focus,
+.main__parent-link:focus, */
 .prev-link:hover,
 .prev-link:focus {
   background: #FFFFFF;
   color: #262626;
 }
 
-.main__child-link:active,
+.main__input:checked + .main__label .main__child-link,
+.main__input:checked + .main__label .main__parent-link {
+  padding: 7px 17px 7px 18px;
+  font-family: "IBM Plex Sans", "Verdana", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  letter-spacing: 1.05263px;
+  text-transform: uppercase;
+  border: 1px solid #FFFFFF;
+  box-sizing: border-box;
+  border-radius: 266px;
+  background-color: #FFFFFF;
+  color: #262626;
+  font-size: 7.89474px;
+  line-height: 11px;
+  text-decoration: none;
+}
+
+/* .main__child-link:active,
+.main__parent-link:active, */
 .prev-link:active {
   opacity: 0.7;
 } 
 
-.main__child-link {
+/* .main__child-link {
   margin-right: 87px;
-}
+} */
 
 .main__parent-link {
   padding: 7px 15px;
