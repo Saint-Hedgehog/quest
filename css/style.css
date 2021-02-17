@@ -42,6 +42,8 @@
 }
 
 body {
+  position: relative;
+  min-width: 580px;
   margin: 0;
   padding: 0;
   font-family: "Nunito", "Arial", sans-serif;
@@ -177,7 +179,8 @@ fieldset {
   justify-content: center;
 }
 
-.next-link {
+.next-link,
+.modal-wrong__btn {
   position: relative;
   width: 139px;
   margin: 0 auto;
@@ -226,6 +229,7 @@ fieldset {
 /* person */
 
 .person {
+  position: relative;
   padding: 34px 55px 17px;
 }
 
@@ -312,6 +316,10 @@ fieldset {
   margin-bottom: 10px;
 }
 
+.person fieldset:last-of-type {
+  margin-bottom: 41px;
+}
+
 .input:checked + .label::after  {
   transform: scale(1);
 }
@@ -349,3 +357,67 @@ fieldset {
   background-color: #fff;
   transform: scale(0);
 }
+
+/* Modal */
+
+.modal-correctly,
+.modal-wrong {
+  position: absolute;
+  top: 41.5%;
+  left: 50%;
+  width: 382px;
+  height: 278px;
+  padding: 34px;
+  font-weight: bold;
+  text-align: center;
+  background-color: #fff;
+  color: #262626;
+  border-radius: 10px;
+  transform: translate(-50%,-50%);
+}
+
+.modal-wrong {
+  top: 50.1%;
+  height: 382px;
+  padding-left: 49px;
+  padding-right: 49px;
+}
+
+.modal-correctly h2,
+.modal-wrong h2 {
+  margin: 0;
+  margin-bottom: 11px;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: 0.05em;
+}
+
+.modal-wrong h2 {
+  margin-bottom: 10px;
+}
+
+.modal-wrong img {
+  margin-left: -13px;
+  margin-bottom: 5px;
+}
+
+.modal-correctly p,
+.modal-wrong p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 19px;
+  color: #262626;
+  letter-spacing: 0.04em;
+}
+
+.modal-wrong p {
+  margin-bottom: 26px;
+  text-align: start;
+}
+
+.modal-wrong__btn {
+  color: #9B55F6;
+  padding-left: 34px;
+  padding-right: 34px;
+}
+
