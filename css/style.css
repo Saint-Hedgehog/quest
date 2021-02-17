@@ -366,7 +366,7 @@ fieldset {
   top: 41.5%;
   left: 50%;
   width: 382px;
-  height: 278px;
+  min-height: 278px;
   padding: 34px;
   font-weight: bold;
   text-align: center;
@@ -378,7 +378,7 @@ fieldset {
 
 .modal-wrong {
   top: 50.1%;
-  height: 382px;
+  min-height: 382px;
   padding-left: 49px;
   padding-right: 49px;
 }
@@ -421,3 +421,44 @@ fieldset {
   padding-right: 34px;
 }
 
+/* result */
+
+.person-congratulations p:first-of-type {
+  margin-bottom: 16px;
+}
+
+.person-congratulations p:not(:first-of-type),
+.person p:last-of-type {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: left;
+  color: #FFFFFF;
+  letter-spacing: 0.06em;
+}
+
+.person-congratulations p:nth-of-type(2) {
+  margin-bottom: 18px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: 0.05em;
+}
+
+.person-congratulations p:last-of-type {
+  margin-bottom: 29px;
+}
+
+.person-congratulations img {
+  margin: 0 24px 14px 24px;
+}
+
+.person-congratulations .next-link {
+  display: block;
+  width: 135px;
+  margin: 0 auto;
+  padding: 6px 34px 7px;
+  font-size: 7.89474px;
+  line-height: 11px;
+  text-align: center;
+ }
