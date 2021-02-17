@@ -26,7 +26,6 @@
     url("../fonts/nunito-700.woff") format("woff");
 }
 
-/* ibm-plex-sans-700 - cyrillic */
 @font-face {
   font-family: 'IBM Plex Sans';
   font-style: normal;
@@ -123,12 +122,12 @@ fieldset {
   margin: 0 auto;
   margin-bottom: 17px;
   padding: 252px 89px 3px 84px;
-  border: 1px solid #FFFFFF;
-  border-radius: 10px;
   background-image: url("../img/child.png"), url("../img/parent.png"), url("../img/bagel.svg");
   background-repeat: no-repeat;
   background-position: 77px 48px, 176px 14px, 66px 14px;
   background-size: 81px 196px, 243px 243px, 283px 248px;
+  border: 1px solid #FFFFFF;
+  border-radius: 10px;
 }
 
 .main fieldset {
@@ -142,22 +141,17 @@ fieldset {
   font-family: "IBM Plex Sans", "Verdana", sans-serif;
   font-style: normal;
   font-weight: bold;
-  letter-spacing: 1.05263px;
-  text-transform: uppercase;
-  border: 1px solid #FFFFFF;
-  box-sizing: border-box;
-  border-radius: 266px;
-  background-color: transparent;
-  color: #FFFFFF;
   font-size: 7.89474px;
   line-height: 11px;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: #FFFFFF;
   text-decoration: none;
+  border: 1px solid #FFFFFF;
+  border-radius: 266px;
+  letter-spacing: 1.05263px;
 }
 
-/* .main__child-link:hover,
-.main__child-link:focus,
-.main__parent-link:hover,
-.main__parent-link:focus, */
 .prev-link:hover,
 .prev-link:focus {
   background: #FFFFFF;
@@ -170,15 +164,9 @@ fieldset {
   color: #262626;
 }
 
-/* .main__child-link:active,
-.main__parent-link:active, */
 .prev-link:active {
   opacity: 0.7;
 } 
-
-/* .main__child-link {
-  margin-right: 87px;
-} */
 
 .main__parent-link {
   padding: 7px 15px;
@@ -199,13 +187,13 @@ fieldset {
   font-weight: bold;
   font-size: 8.74408px;
   line-height: 12px;
-  letter-spacing: 1.16588px;
+  text-decoration: none;
   text-transform: uppercase;
-  color: #262626;
   background: #FDFDFD;
+  color: #262626;
   border: 0;
   border-radius: 155.062px;
-  text-decoration: none;
+  letter-spacing: 1.16588px;
 }
 
 .next-link:hover,
@@ -285,8 +273,8 @@ fieldset {
 }
 
 .person-parent p:last-of-type {
-  letter-spacing: 0.04em;
   margin-bottom: 42px;
+  letter-spacing: 0.04em;
 }
 
 .person .nav {
