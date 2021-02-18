@@ -1,16 +1,11 @@
-// const question = {
-//     question: '',
-//     img: '', // path
-//     comment: '', // on mistake
-//     values: [
-//         '1',
-//         '2',
-//         '3',
-//     ],
-//     answer: 0, // index of answer
-// }
+'use strict'
 
 /* child */
+
+const questionChild0 = {
+    img: 'img/question-parent-0.png', // path
+    text: 'Самостоятельно преодолеть путь от школы до дома не так просто, как кажется на первый взгляд. Тебя могут поджидать опасности на дорогах, в общении с незнакомцами и даже дома. Пройди наш квест, чтобы узнать, как ты справишься с опасными ситуациями в реальной жизни!',
+}
 
 /* Block 1 */
 
@@ -163,6 +158,11 @@ const questionChild12 = {
 }
 
 /* Parent */
+
+const questionParent0 = {
+    img: 'img/question-parent-0.png', // path
+    text: 'Самостоятельный путь ребенка от школы до дома — настоящее испытание для родителей и детей. Крайне важно, чтобы ничего не угрожало школьнику, но опасности могут поджидать на дорогах, в общении с посторонними и даже дома. Проверьте, как хорошо вы подготовили ребенка к опасностям в городе.',
+}
 
 /* Block 1 */
 
@@ -319,17 +319,48 @@ const questionParent12 = {
 const questions = {
     parent: {
         img: '',
-        background: '', // можно через css класс
-        introText: '',
-        resultText: '',
+        background: 'person-parent', // можно через css класс
+        // introText: '', // поставил questionParent0
+        resultText1: `Вы прошли необходимый инструктаж для подготовки ребёнка к преодолению опасностей в городе и дома! За время прохождения теста вы допустили ${N} ошибок.`,
+        resultText2: 'Говорить с ребёнком о мерах осторожности, правилах поведения в опасных ситуациях и учесть все детали сложно, поэтому запишитесь на наш вебинар: эксперты подробно расскажут о безопасном передвижении по городу, правилах общения с незнакомыми и решении бытовых проблем.',
         questions: [
-            {}, // question object
-            {},
+            questionParent0,
+            questionParent1,
+            questionParent2,
+            questionParent3,
+            questionParent4,
+            questionParent5,
+            questionParent6,
+            questionParent7,
+            questionParent8,
+            questionParent9,
+            questionParent10,
+            questionParent11,
+            questionParent12,
         ]
     },
-    pupil: [
-        // as parent
-    ]
+    child: {
+        img: '',
+        background: 'person-child', // можно через css класс
+        // introText: '', // поставил questionChild0
+        resultText1: 'Поздравляем с прохождением испытания! Ты сам преодолел путь из школы до дома и дождался родителей.',
+        resultText2: `За это время ты потратил ${N} жизней в нашем квесте. Неплохой результат, но можно подготовиться ещё лучше! Чтобы избежать всех опасностей в реальном мире, запишитесь на наш вебинар для родителей: эксперты подробно расскажут о безопасном передвижении по городу, правилах общения с незнакомыми и решении бытовых проблем.`,
+        questions: [
+            questionChild0,
+            questionChild1,
+            questionChild2,
+            questionChild3,
+            questionChild4,
+            questionChild5,
+            questionChild6,
+            questionChild7,
+            questionChild8,
+            questionChild9,
+            questionChild10,
+            questionChild11,
+            questionChild12,
+        ]
+    }
 };
 
 const questStatus = {
@@ -362,8 +393,8 @@ const checkAnswer = () => {
 };
 
 const onRoleClick = () => {
-    // todo
     questStatus.role = document.querySelector('.role').value; // ??? selector
+    // todo снять disable c кнопки Продолжить
 }
 
 const onRoleNextClick = () => {
