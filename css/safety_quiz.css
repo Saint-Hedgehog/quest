@@ -17,7 +17,6 @@
   font-size: 18px;
   line-height: 25px;
   color: #FFFFFF;
-  background-color: #E5E5E5;
 }
 
 .visually-hidden {
@@ -87,7 +86,7 @@ fieldset {
   margin: 0 auto;
   margin-bottom: 17px;
   padding: 252px 89px 3px 84px;
-  background-image: url("../img/child.png"), url("../img/parent.png"), url("../img/bagel.svg");
+  background-image: url("https://tetrika-school.ru/s3/static/img/safety_quiz/child.png"), url("https://tetrika-school.ru/s3/static/img/safety_quiz/parent.png"), url("https://tetrika-school.ru/s3/static/img/safety_quiz/bagel.svg");
   background-repeat: no-repeat;
   background-position: 77px 48px, 176px 14px, 66px 14px;
   background-size: 81px 196px, 243px 243px, 283px 248px;
@@ -211,7 +210,7 @@ fieldset {
   height: 230px;
   margin-bottom: 14px;
   background-color: #C4C4C4;
-  background-image: url("../img/child.png"), url("../img/graph.png");
+  background-image: url("https://tetrika-school.ru/s3/static/img/safety_quiz/child.png"), url("https://tetrika-school.ru/s3/static/img/safety_quiz/graph.png");
   background-repeat: no-repeat;
   background-position: 98px 37px, 31px -66px;
   background-size: 68px 166px, 403px 355px;
@@ -220,7 +219,7 @@ fieldset {
 .person-parent__img {
   height: 182px;
   margin-bottom: 7px;
-  background-image: url("../img/child.png"), url("../img/parent.png"), url("../img/graph-parent.png");
+  background-image: url("https://tetrika-school.ru/s3/static/img/safety_quiz/child.png"), url("https://tetrika-school.ru/s3/static/img/safety_quiz/parent.png"), url("https://tetrika-school.ru/s3/static/img/safety_quiz/graph-parent.png");
   background-repeat: no-repeat;
   background-position: 94px 15px, 94px -4px, 31px -66px;
   background-size: 68px 166px, 186px 186px, 391px 313px;

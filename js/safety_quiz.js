@@ -38,7 +38,7 @@ const questions = {
     parent: {
         [INTRO_STEP]: {
             className: 'person person-parent',
-            img: 'img/parent-intro.png',
+            img: 'https://tetrika-school.ru/s3/static/img/safety_quiz/parent-intro.png',
             description: 'Самостоятельный путь ребенка от школы до дома — настоящее испытание для родителей и детей. Крайне важно, чтобы ничего не угрожало школьнику, но опасности могут поджидать на дорогах, в общении с посторонними и даже дома. Проверьте, как хорошо вы подготовили ребенка к опасностям в городе.'
         },
         question: {
@@ -46,7 +46,7 @@ const questions = {
         },
         [RESULT_STEP]: {
             className: 'person person-parent person-congratulations',
-            img: 'img/result.png',
+            img: 'https://tetrika-school.ru/s3/static/img/safety_quiz/result.png',
             getResultHeader: (N) => `Вы прошли необходимый инструктаж для подготовки ребёнка к преодолению опасностей в городе и дома! За время прохождения теста вы допустили ${N} ошибок.`,
             getResultDescription: () => 'Говорить с ребёнком о мерах осторожности, правилах поведения в опасных ситуациях и учесть все детали сложно, поэтому запишитесь на наш вебинар: эксперты подробно расскажут о безопасном передвижении по городу, правилах общения с незнакомыми и решении бытовых проблем.',
         },
@@ -55,7 +55,7 @@ const questions = {
     child: {
         [INTRO_STEP]: {
             className: 'person person-child',
-            img: 'img/child-intro.png',
+            img: 'https://tetrika-school.ru/s3/static/img/safety_quiz/child-intro.png',
             description: 'Самостоятельно преодолеть путь от школы до дома не так просто, как кажется на первый взгляд. Тебя могут поджидать опасности на дорогах, в общении с незнакомцами и даже дома. Пройди наш квест, чтобы узнать, как ты справишься с опасными ситуациями в реальной жизни!'
         },
         question: {
@@ -63,7 +63,7 @@ const questions = {
         },
         [RESULT_STEP]: {
             className: 'person person-child person-congratulations',
-            img: 'img/result.png',
+            img: 'https://tetrika-school.ru/s3/static/img/safety_quiz/result.png',
             getResultHeader: () => 'Поздравляем с прохождением испытания! Ты сам преодолел путь из школы до дома и дождался родителей.',
             getResultDescription: (N) => `За это время ты потратил ${N} жизней в нашем квесте. Неплохой результат, но можно подготовиться ещё лучше! Чтобы избежать всех опасностей в реальном мире, запишитесь на наш вебинар для родителей: эксперты подробно расскажут о безопасном передвижении по городу, правилах общения с незнакомыми и решении бытовых проблем.`,
         },
@@ -72,13 +72,16 @@ const questions = {
 };
 
 const loadQuestions = () => {
-    const p1 = fetch('./child-questions.json').then(r => r.json()).then((json) => {
+    const p1 = fetch('https://tetrika-school.ru/static/json/child-questions.json', {mode: 'no-cors'}).then(r => r.json()).then((json) => {
         questions.child.questions = json;
     });
-    const p2 = fetch('./parent-questions.json').then(r => r.json()).then((json) => {
+    const p2 = fetch('https://tetrika-school.ru/static/json/parent-questions.json', {mode: 'no-cors'}).then(r => r.json()).then((json) => {
         questions.parent.questions = json;
     });
-    return Promise.all([p1, p2]);
+    return Promise.all([p1, p2]).catch((e) => {
+        console.error(e);
+        section.setAttribute('hidden', 'true');
+    });
 }
 
 const questStatus = {
@@ -127,7 +130,7 @@ const changeMarkup = () => {
             prevBtn.setAttribute('hidden', 'true');
             fields.setAttribute('hidden', 'true');
             fields.innerHTML = '';
-            nextBtn.insertAdjacentHTML('afterend', '<a href="#rec281800224" class="next-link">записаться</a>');
+            nextBtn.insertAdjacentHTML('afterend', '<a href="#form3" class="next-link">записаться</a>');
             nextBtn.style.display = 'none';
             break;
         default:
