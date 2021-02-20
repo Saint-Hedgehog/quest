@@ -1,47 +1,12 @@
-@font-face {
-  font-family: "Nunito";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("../fonts/nunito-500.woff2") format("woff2"),
-    url("../fonts/nunito-500.woff") format("woff");
-}
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Nunito&display=swap');
 
-@font-face {
-  font-family: 'Nunito';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('../fonts/nunito-600.woff2') format('woff2'),
-    url('../fonts/nunito-600.woff') format('woff');
-}
-
-
-@font-face {
-  font-family: "Nunito";
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("../fonts/nunito-700.woff2") format("woff2"),
-    url("../fonts/nunito-700.woff") format("woff");
-}
-
-@font-face {
-  font-family: 'IBM Plex Sans';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('../fonts/ibm-plex-sans-700.woff2') format('woff2'),
-    url('../fonts/ibm-plex-sans-700.woff') format('woff');
-}
-
-*,
-*::before,
-*::after {
+.quiz *,
+.quiz *::before,
+.quiz *::after {
   box-sizing: border-box;
 }
 
-body {
+.container {
   position: relative;
   min-width: 580px;
   margin: 0;
@@ -74,8 +39,7 @@ fieldset {
   border: 0;
   border-radius: 0;
 }
-
-.main,
+.quiz-alone,
 .person {
   width: 580px;
   min-height: 498px;
@@ -85,8 +49,7 @@ fieldset {
   border-radius: 10px;
 }
 
-.main p:first-of-type,
-.person p {
+.test {
   margin: 0;
   margin-bottom: 9px;
   font-style: normal;
@@ -97,7 +60,7 @@ fieldset {
   color: #CBCBCB
 }
 
-.main h1 {
+.header {
   margin: 0;
   margin-bottom: 20px;
   font-weight: 700;
@@ -107,7 +70,7 @@ fieldset {
   letter-spacing: 0.04em;
 }
 
-.main p:last-of-type {
+.quiz-alone p:last-of-type {
   margin: 0;
   margin-bottom: 19px;
   font-weight: 500;
@@ -116,7 +79,7 @@ fieldset {
   text-align: center;
 }
 
-.main__choice {
+.quiz-alone__choice {
   display: flex;
   justify-content: space-between;
   width: 432px;
@@ -132,12 +95,12 @@ fieldset {
   border-radius: 10px;
 }
 
-.main fieldset {
+.quiz-alone fieldset {
   display: inline-block;
 }
 
-.main__child-link,
-.main__parent-link,
+.quiz-alone__child-link,
+.quiz-alone__parent-link,
 .prev-link {
   padding: 7px 17px 7px 18px;
   font-family: "IBM Plex Sans", "Verdana", sans-serif;
@@ -152,6 +115,7 @@ fieldset {
   border: 1px solid #FFFFFF;
   border-radius: 266px;
   letter-spacing: 1.05263px;
+  outline: 0;
 }
 
 .prev-link:hover,
@@ -160,8 +124,8 @@ fieldset {
   color: #262626;
 }
 
-.main__input:checked + .main__label .main__child-link,
-.main__input:checked + .main__label .main__parent-link {
+.quiz-alone__input:checked + .quiz-alone__label .quiz-alone__child-link,
+.quiz-alone__input:checked + .quiz-alone__label .quiz-alone__parent-link {
   background: #FFFFFF;
   color: #262626;
 }
@@ -170,7 +134,7 @@ fieldset {
   opacity: 0.7;
 } 
 
-.main__parent-link {
+.quiz-alone__parent-link {
   padding: 7px 15px;
 }
 
@@ -197,6 +161,7 @@ fieldset {
   border: 0;
   border-radius: 155.062px;
   letter-spacing: 1.16588px;
+  outline: 0;
 }
 
 .next-link:hover,
@@ -300,14 +265,19 @@ fieldset {
   margin: 0;
 }
 
+.nav button:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
 /* questions */
 
-.person-child-q1 img {
+.person-child-question img {
   margin-left: -19px;
   margin-bottom: 5px;
 }
 
-.person-child-q1 p:last-of-type {
+.person-child-question p:last-of-type {
   letter-spacing: 0.038em;
   margin-bottom: 25px;
 }
@@ -324,7 +294,7 @@ fieldset {
   transform: scale(1);
 }
 
-.person-child-q1 label {
+.person-question label {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -335,7 +305,7 @@ fieldset {
   letter-spacing: 0.06em;
 }
 
-.person-child-q1 label::before {
+.person-question label::before {
   content: "";
   flex: 0 0 20px;
   align-self: flex-start;
@@ -346,7 +316,7 @@ fieldset {
   border: 2px solid #FFEEEE;
 }
 
-.person-child-q1 label::after {
+.person-question label::after {
   content: "";
   position: absolute;
   top: 4px;

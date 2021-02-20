@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test quest</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test quest</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <section class="main">
-    <p>ТЕСТ</p>
-    <h1>Один на улице и дома: как избежать неприятностей</h1>
-    <p>Выберите героя</p>
-    <div class="main__choice">
-      <fieldset>
-        <input class="visually-hidden main__input" type="radio" name="person" id="child" checked/>
-        <label for="child" class="main__label"><span class="main__child-link">ребёнок</span></label>
-      </fieldset>
-      <!--  -->
-      <fieldset>
-        <input class="visually-hidden main__input" type="radio" name="person" id="parent"/>
-        <label for="parent" class="main__label"><span class="main__parent-link">родитель</span></label>
-      </fieldset>
+<body class="container">
+<section class="quiz">
+    <p class="test">ТЕСТ</p>
+    <div class="header"></div>
+    <img class="image" src="" alt="quiz" width="470" height="230">
+    <p class="description"></p>
+    <div class="fields">
     </div>
     <div class="nav">
-      <a href="#" class="next-link">продолжить
-        <svg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0.0995178 4.66827H14.09" stroke="#262626" stroke-width="1.16588"/>
-          <path d="M10.5924 8.16591L14.09 4.66828L10.5924 1.17065" stroke="#262626" stroke-width="1.16588"/>
-          </svg>
-      </a>
+        <button class="prev-link">назад</button>
+        <button class="next-link">продолжить
+            <svg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.0995178 4.66827H14.09" stroke="#262626" stroke-width="1.16588"/>
+                <path d="M10.5924 8.16591L14.09 4.66828L10.5924 1.17065" stroke="#262626" stroke-width="1.16588"/>
+            </svg>
+        </button>
     </div>
-  </section>
+</section>
+<!--  -->
+<section class="modal-correctly visually-hidden">
+    <h2>Правильно, молодец!</h2>
+    <img src="img/ok.svg" alt="ок" width="224" height="148">
+    <p>Продолжай в том же духе!</p>
+</section>
+<!--  -->
+<section class="modal-wrong visually-hidden">
+    <h2>К сожалению, нет!</h2>
+    <img src="img/bus.svg" alt="correctly-img" width="195" height="140">
+    <p class="comment"></p>
+    <button type="button" class="modal-wrong__btn">Вернуться</button>
+</section>
 
-  <script src="js/index.js"></script>
+<script src="js/index.js"></script>
 </body>
 </html>

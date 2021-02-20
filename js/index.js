@@ -1,408 +1,288 @@
-'use strict'
+'use strict';
 
-/* child */
+const REG_FORM_ID = 'rec281800224';
 
-const questionChild0 = {
-    img: 'img/question-parent-0.png', // path
-    text: 'Самостоятельно преодолеть путь от школы до дома не так просто, как кажется на первый взгляд. Тебя могут поджидать опасности на дорогах, в общении с незнакомцами и даже дома. Пройди наш квест, чтобы узнать, как ты справишься с опасными ситуациями в реальной жизни!',
-}
+const ENTER_STEP = 'enter';
+const INTRO_STEP = 'intro';
+const RESULT_STEP = 'result';
 
-/* Block 1 */
-
-const questionChild1 = {
-    question: 'Закончился последний урок. Тебе нужно перейти дорогу на соседнюю улицу. Как это правильно сделать это правильно?',
-    img: 'img/question-child-1.png', // path
-    comment: 'Пересекать дорогу можно только через пешеходный переход, иначе ты можешь попасть в аварию. Вернись на шаг назад и подумай ещё!', // on mistake
-    values: [
-        'Перейти в любом месте вместе с группой людей',
-        'Главное — быстро перебежать дорогу',
-        'Найти пешеходный переход и убедиться, что рядом нет машин',
-    ],
-    answer: 2, // index of answer
-}
-
-const questionChild2 = {
-    question: 'Ты столкнулся с преградой — автобус ждет пассажиров на остановке, чем мешает тебе пройти. Как обойдешь автобус?',
-    img: 'img/question-child-2.png', // path
-    comment: 'За автобусом есть другой транспорт, машины сзади автобуса могут не заметить тебя и начать движение. Если автобус не покинет остановку, то обзор не будет полным. Выбери верный ответ.', // on mistake
-    values: [
-        'Сзади',
-        'Спереди',
-        'Подожду, пока автобус уедет',
-    ],
-    answer: 2, // index of answer
-}
-
-const questionChild3 = {
-    question: 'Ты почти у цели! Чтобы попасть на свою улицу, нужно перейти дорогу. Машин рядом нет, а до подземного перехода идти ещё 5 минут. Что будешь делать?',
-    img: 'img/question-child-3.png', // path
-    comment: 'Переходя дорогу в неположенном месте, ты подвергаешь себя опасности и больше времени тратишь на пересечение дороги. Попробуй снова.', // on mistake
-    values: [
-        'Если машин нет, то быстро перебегу',
-        'Дойду до подземного перехода',
-        'Перейду, где удобнее, но буду держать в руках табличку с надписью «Водитель, не задави!»',
-    ],
-    answer: 1, // index of answer
-}
-
-const questionChild4 = {
-    question: 'На улице стемнело. Вечером из-за недостатка света водители плохо видят пешеходов. Что нужно сделать, чтобы стать более заметным на дороге?',
-    img: 'img/question-child-4.png', // path
-    comment: 'Так ты можешь обратить внимание пешеходов на себя, но не станешь более заметным для водителя. Попробуй ещё раз!', // on mistake
-    values: [
-        'Надеть светоотражающий браслет',
-        'Надеть костюм уточки и украсить себя гирляндой',
-        'Махать руками',
-    ],
-    answer: 0, // index of answer
-}
-
-/* Block 2 */
-
-const questionChild5 = {
-    question: 'Незнакомая машина останавливается у пешеходного перехода. Водитель выходит из автомобиля и предлагает довезти тебя до дома. Согласишься?',
-    img: 'img/question-child-5.png', // path
-    comment: 'Садиться в машину к незнакомцу очень опасно — ты не можешь на 100% знать истинную цель человека. Стоит отойти как можно дальше от дороги, если рядом тормозит машина. Попробуй ответить на вопрос ещё раз!', // on mistake
-    values: [
-        'Нет. Сразу отойду в людное место, чтобы привлечь внимание окружающих',
-        'Соглашусь, но попрошу остановить за домом, чтобы не увидели родители',
-        'Конечно, соглашусь! Я так устал идти',
-    ],
-    answer: 0, // index of answer
-}
-
-const questionChild6 = {
-    question: 'Сегодня в школе ты не успел пообедать, поэтому очень голоден. В парке рядом с домом незнакомец раздает детям конфеты. Он подходит к тебе и предлагает угощение. Как поступишь?',
-    img: 'img/question-child-6.png', // path
-    comment: 'Хорошо, что ты доброжелателен к людям, но будь осторожнее — даже обычная конфета может быть приманкой для злоумышленника. Попробуй выбрать другой вариант ответа.', // on mistake
-    values: [
-        'Возьму конфету из вежливости, но не стану есть',
-        'Я очень голоден, поэтому съем конфету',
-        'Не буду брать в руки конфету и говорить с незнакомцем',
-    ],
-    answer: 2, // index of answer
-}
-
-const questionChild7 = {
-    question: 'Наконец ты подошёл к дому. Незнакомый мужчина доброжелательно просит о помощи — он заблудился и хочет, чтобы ты проводил его до дома. Что ты сделаешь?',
-    img: 'img/question-child-7.png', // path
-    comment: 'Идти куда-либо с незнакомцем очень опасно, не поддавайся на уговоры проводить. Лучше ответить, что не знаешь, где находится место. Доброжелательность может быть обманчива.', // on mistake
-    values: [
-        'С радостью провожу! Людям надо помогать',
-        'Плохо знаю свой район, поэтому приглашу домой и предложу подождать вместе со мной родителей ',
-        'Откажу в просьбе и зайду в подъезд. Прослежу, чтобы незнакомец не пошел за мной',
-    ],
-    answer: 2, // index of answer
-}
-
-const questionChild8 = {
-    question: 'Отлично, ты в подъезде! Двери лифта открываются, но в вызванном лифте уже находится незнакомый человек. Зайдешь в лифт?',
-    img: 'img/question-child-8.png', // path
-    comment: 'Лифт —  замкнутое пространство, в котором лучше не оставаться наедине с незнакомыми людьми. Подумай ещё раз!', // on mistake
-    values: [
-        'Да, наверное, это сосед. Я ещё не знаю всех жильцов своего дома',
-        'Не зайду. Если незнакомец выйдет из лифта и зайдёт снова, нажму кнопку ближайшего этажа и выскочу на площадку, привлекая внимание соседей',
-        'Зайду! На мне же костюм уточки и гирлянда, поэтому я в полной безопасности!',
-    ],
-    answer: 1, // index of answer
-}
-
-/* Block 3 */
-
-const questionChild9 = {
-    question: 'Вот ты и дома! Это был непростой путь —  можно немного отдохнуть. Но тут звонок в дверь: без предупреждения пришёл почтальон, он просит открыть дверь и забрать посылку. Как поступишь?',
-    img: 'img/question-child-9.png', // path
-    comment: 'Извещение не приходило, поэтому ты не можешь быть уверен, что незнакомец — сотрудник почты. Вернись и ответь ещё раз!', // on mistake
-    values: [
-        'Не открывая дверь, сообщу час, когда дома будут взрослые. Посылку может принять только взрослый человек',
-        'Лучше сразу заберу посылку — вдруг незнакомец поступит как Почтальон Печкин и откажется возвращать бандероль',
-        'Приглашу почтальона домой дождаться родителей',
-    ],
-    answer: 0, // index of answer
-}
-
-const questionChild10 = {
-    question: 'Время гулять с собакой. Покидая квартиру, ты посмотрел в глазок. На лестничной площадке незнакомые люди шумят и агрессивно ведут себя. Как быть?',
-    img: 'img/question-child-10.png', // path
-    comment: 'Если ты видишь, что люди агрессивно себя ведут: ругаются, шумят, толкают друг друга, не стоит не проходить слишком близко, чтобы не вызвать подобное поведение в свою сторону', // on mistake
-    values: [
-        'Подожду, пока они уйдут',
-        'Присоединюсь к ним',
-        'Спокойно выйду из квартиры и пройду мимо',
-    ],
-    answer: 0, // index of answer
-}
-
-const questionChild11 = {
-    question: 'Вернувшись домой, ты почувствовал странный запах. Кажется, ты забыл выключить газовые горелки после того, как разогрел обед. Что делать?',
-    img: 'img/question-child-11.png', // path
-    comment: 'Потухшую горелку нужно выключить, чтобы не произошёл взрыв. Если продолжительное время дышать газом, можно получить газовое отравление.', // on mistake
-    values: [
-        'Полить водой горелку',
-        'Поджечь горелку, чтобы газ не утекал',
-        'Выключить погасшие горелки, проветривать помещение',
-    ],
-    answer: 2, // index of answer
-}
-
-const questionChild12 = {
-    question: 'Ты принял меры, чтобы предотвратить взрыв газа. Теперь нужно вызвать газовую службу. По какому номеру будешь звонить?',
-    img: 'img/question-child-12.png', // path
-    comment: 'Экстренная ситуация может случиться с каждым, поэтому лучше помнить номера всех спасательных служб: 01 — пожарная охрана, 02 — полиция, 03 — скорая помощь, 04 — аварийная служба газа, 112 — универсальный телефон спасения. Теперь ответь ещё раз!', // on mistake
-    values: [
-        '02',
-        '03',
-        '04',
-    ],
-    answer: 2, // index of answer
-}
-
-/* Parent */
-
-const questionParent0 = {
-    img: 'img/question-parent-0.png', // path
-    text: 'Самостоятельный путь ребенка от школы до дома — настоящее испытание для родителей и детей. Крайне важно, чтобы ничего не угрожало школьнику, но опасности могут поджидать на дорогах, в общении с посторонними и даже дома. Проверьте, как хорошо вы подготовили ребенка к опасностям в городе.',
-}
-
-/* Block 1 */
-
-const questionParent1 = {
-    question: 'Ребёнок закончил занятия и отправился домой. Рядом со школой установлен дорожный знак «Дети», что он означает?',
-    img: 'img/question-parent-1.png', // path
-    comment: 'Дорожный знак «Дети» не позволяет ребёнку веселиться на проезжей части, эта область остается опасной. Знак «Дети» — особое предупреждение для водителя. Вернитесь на шаг назад и подумайте ещё!', // on mistake
-    values: [
-        'Ребёнок может безопасно гулять по дороге',
-        'Возможно появление детей на проезжей части',
-        'Дети могут устроить дискотеку на проезжей части',
-    ],
-    answer: 1, // index of answer
-}
-
-const questionParent2 = {
-    question: 'Проходя парк, ребёнок засмотрелся и не успел перейти широкую проезжую часть дороги за один раз по регулируемому пешеходному переходу. Как следует поступить?',
-    img: 'img/question-parent-2.png', // path
-    comment: 'Остановка на середине проезжей части дороги крайне нежелательна. Наиболее безопасное место — разделяющая линия, обратите внимание на разметку. Попробуйте ещё раз!', // on mistake
-    values: [
-        'Нужно остановиться на линии, разделяющей транспортные потоки противоположных направлений, дождаться зелёного сигнала',
-        'Если встречных машин нет, можно быстро перебежать оставшуюся часть дороги',
-        'Вернуться назад, аккуратно обходя машины',
-    ],
-    answer: 0, // index of answer
-}
-
-const questionParent3 = {
-    question: 'По дороге из школы ребёнок встретил друга. Загорелся жёлтый сигнал светофора, друг перебежал дорогу, а ребёнок остался на другой стороне. Что делать в этой ситуации?',
-    img: 'img/question-parent-3.png', // path
-    comment: 'Переходить дорогу во время движения машин очень опасно. Стоит дождаться нужного сигнала светофора. Выберите верный ответ!', // on mistake
-    values: [
-        'Независимо от сигнала пешеходного светофора, перебежать к другу',
-        'Привлечь внимание друга и позвать его к себе',
-        'Подать другу сигнал, что все хорошо. Перейти дорогу на зелёный сигнал',
-    ],
-    answer: 2, // index of answer
-}
-
-const questionParent4 = {
-    question: 'Чтобы выйти к дому, ребёнку нужно перейти проезжую часть, но дорогу перегородил автобус. С какой стороны нужно обойти стоящий автобус?',
-    img: 'img/question-parent-4.png', // path
-    comment: 'Теория о том, что автобус нужно обходить сзади — миф, это правило не прописано в ПДД. Машины сзади автобуса могут не заметить ребёнка и начать движение. Вернитесь и попробуйте еще раз!', // on mistake
-    values: [
-        'Спереди, чтобы движущиеся во встречном направлении автомобили видели пешехода',
-        'Сзади, чтобы движущиеся слева автомобили видели пешехода',
-        'Ни с какой. Нужно подождать, пока автобус отъедет от места остановки',
-    ],
-    answer: 2, // index of answer
-}
-
-/* Block 2 */
-
-const questionParent5 = {
-    question: 'Незнакомец на улице останавливает ребёнка и восхищается его внешними данными. Он представляется режиссёром и предлагает школьнику сняться в фильме, но пробы прямо сейчас. Как должен поступить ребёнок?',
-    img: 'img/question-parent-5.png', // path
-    comment: 'Даже если профессия незнакомца внушает доверие, очень опасно отправляться с ним куда-либо без взрослых. Вернитесь и попробуйте ещё.', // on mistake
-    values: [
-        'Лучше сразу согласиться. Это же шанс!',
-        'Спросить, когда и куда можно подойти вместе с родителями',
-        'Подумать подольше и согласиться на срочные пробы — так можно привлечь внимание к своей кандидатуре',
-    ],
-    answer: 1, // index of answer
-}
-
-const questionParent6 = {
-    question: 'Незнакомец всё продолжает следовать за ребёнком, но держится на расстоянии. Каким предметом можно воспользоваться, чтобы предупредить родителей о том, что ребёнок в опасности?',
-    img: 'img/question-parent-6.png', // path
-    comment: 'В критических ситуациях сложно воспользоваться телефоном. Существуют специальные устройства, которые посылают сигнал опасности и геопозицию ребёнка. Чтобы воспользоваться им, нужно всего лишь нажать на кнопку. Выберите верный ответ!', // on mistake
-    values: [
-        'Гаджетом, который позволяет отслеживать геопозицию ребёнка и подавать сигнал об опасности',
-        'Флагом, он послужит визуальным сигнальным средством',
-        'Мобильным телефоном',
-    ],
-    answer: 0, // index of answer
-}
-
-const questionParent7 = {
-    question: 'Ребёнок остановился на перекрестке, он думает, в какую сторону ему нужно пойти. Незнакомая машина тормозит около него, женщина в автомобиле предлагает довезти ребёнка до дома. Как правильно поступить?',
-    img: 'img/question-parent-7.png', // path
-    comment: 'Намерения человека никак не связаны с его полом. Незнакомые женщины и мужчины в равной степени представляют опасность. Попробуйте ещё раз.', // on mistake
-    values: [
-        'Сесть в машину. Женщина не представляет никакой опасности',
-        'Отказаться. Отойти в людное место, чтобы привлечь внимание окружающих',
-        'Согласиться, ведь ребёнок потерялся',
-    ],
-    answer: 1, // index of answer
-}
-
-const questionParent8 = {
-    question: 'Ребёнок дошел до дома. Нужно зайти в подъезд, но вот уже 5 минут за ним кто-то идет следом. Что нужно сделать?',
-    img: 'img/question-parent-8.png', // path
-    comment: 'Крайне опасно в такой ситуации оставаться наедине с незнакомцем в замкнутом пространстве, лучше привлечь внимание другого взрослого и отпугнуть преследователя.', // on mistake
-    values: [
-        'Убежать во дворы, чтобы незнакомец не нашёл дом ребёнка',
-        'Рассказать о нём любому повстречавшемуся взрослому, идущему навстречу',
-        'Забежать в подъезд',
-    ],
-    answer: 1, // index of answer
-}
-
-/* Block 3 */
-
-const questionParent9 = {
-    question: 'Наконец-то ребёнок дома! Кажется, он в безопасности. Но день выдался не из лёгких: пока он сидел за уроками, в одной из комнат замкнуло проводку и начался пожар. Что делать?',
-    img: 'img/question-parent-9.png', // path
-    comment: 'Нужно позаботиться о своей безопасности! Если пламя слишком большое, не пытаться его потушить. Нельзя оставаться в помещении, так ребёнок подвергает себя большому риску.', // on mistake
-    values: [
-        'По возможности закрыть дверь в комнату, где начался пожар. Намочить влажную ткань, дышать через неё и выйти из квартиры',
-        'Сидеть тихо в комнате и ждать, пока кто-то поможет',
-        'Попытаться потушить пожар самостоятельно',
-    ],
-    answer: 0, // index of answer
-}
-
-const questionParent10 = {
-    question: 'Отлично, ребёнок правильно действовал при появлении возгорания! Теперь нужно вызвать спасательную службу. Как следует поступить?',
-    img: 'img/question-parent-10.png', // path
-    comment: 'Звонить из квартиры опасно, пламя может разгореться ещё сильнее. Попробуйте ещё раз!', // on mistake
-    values: [
-        'Позвонить из квартиры. Нужно набрать верный код на домашнем телефоне',
-        'Громко кричать о помощи',
-        'Позвонить по мобильному телефону или от соседей',
-    ],
-    answer: 2, // index of answer
-}
-
-const questionParent11 = {
-    question: 'К счастью, из квартиры ребёнок вышел с мобильным телефоном в кармане. Куда нужно звонить?',
-    img: 'img/question-parent-11.png', // path
-    comment: 'Экстренная ситуация может случиться с каждым, поэтому ребёнку стоит помнить номера всех спасательных служб: 01 — пожарная охрана, 02 — полиция, 03 — скорая помощь, 04 — аварийна служба газа,112 — универсальный телефон службы спасения. Теперь ответьте ещё раз!', // on mistake
-    values: [
-        '03 — скорая помощь',
-        'Электрику, ведь причина возгорания — проблема с проводкой',
-        '112 — универсальный телефон службы спасения',
-    ],
-    answer: 2, // index of answer
-}
-
-const questionParent12 = {
-    question: 'Диспетчер снял трубку. Что должен сказать ребёнок, услышав ответ дежурного диспетчера?',
-    img: 'img/question-parent-12.png', // path
-    comment: 'Чтобы спасательная служба быстро отреагировала и приехала, ребёнок должен точно знать свой адрес. Выберите верный ответ!', // on mistake
-    values: [
-        'Свои географические координаты',
-        'Точный адрес: наименование улицы, номер дома; обозначить, что горит и где',
-        'Только улицу, дом спасательные службы найдут сами',
-    ],
-    answer: 1, // index of answer
-}
-
-/* ------------------------------ */
+const prevBtn = document.querySelector('.prev-link');
+const nextBtn = document.querySelector('.next-link');
+const modalCorrect = document.querySelector('.modal-correctly');
+const modalWrong = document.querySelector('.modal-wrong');
+const modalComment = document.querySelector('.comment');
+const section = document.querySelector('.quiz');
+const header = document.querySelector('.header');
+const image = document.querySelector('.image');
+const description = document.querySelector('.description');
+const fields = document.querySelector('.fields');
 
 const questions = {
+    [ENTER_STEP]: {
+        header: 'Один на улице и дома: как избежать неприятностей',
+        description: 'Выберите героя',
+        className: 'quiz-alone',
+        questionClassName: 'quiz-alone__choice',
+        questionMarkup: `
+                <fieldset>
+                    <input class="visually-hidden quiz-alone__input" type="radio" name="person" id="child"/>
+                    <label for="child" class="quiz-alone__label"><span class="quiz-alone__child-link">ребёнок</span></label>
+                </fieldset>
+                <!--  -->
+                <fieldset>
+                    <input class="visually-hidden quiz-alone__input" type="radio" name="person" id="parent"/>
+                    <label for="parent" class="quiz-alone__label"><span class="quiz-alone__parent-link">родитель</span></label>
+                </fieldset>
+        `
+    },
     parent: {
-        img: '',
-        background: 'person-parent', // можно через css класс
-        // introText: '', // поставил questionParent0
-        resultText1: `Вы прошли необходимый инструктаж для подготовки ребёнка к преодолению опасностей в городе и дома! За время прохождения теста вы допустили ${N} ошибок.`,
-        resultText2: 'Говорить с ребёнком о мерах осторожности, правилах поведения в опасных ситуациях и учесть все детали сложно, поэтому запишитесь на наш вебинар: эксперты подробно расскажут о безопасном передвижении по городу, правилах общения с незнакомыми и решении бытовых проблем.',
-        questions: [
-            questionParent0,
-            questionParent1,
-            questionParent2,
-            questionParent3,
-            questionParent4,
-            questionParent5,
-            questionParent6,
-            questionParent7,
-            questionParent8,
-            questionParent9,
-            questionParent10,
-            questionParent11,
-            questionParent12,
-        ]
+        [INTRO_STEP]: {
+            className: 'person person-parent',
+            img: 'img/parent-intro.png',
+            description: 'Самостоятельный путь ребенка от школы до дома — настоящее испытание для родителей и детей. Крайне важно, чтобы ничего не угрожало школьнику, но опасности могут поджидать на дорогах, в общении с посторонними и даже дома. Проверьте, как хорошо вы подготовили ребенка к опасностям в городе.'
+        },
+        question: {
+            className: 'person person-parent person-question',
+        },
+        [RESULT_STEP]: {
+            className: 'person person-parent person-congratulations',
+            img: 'img/result.png',
+            getResultHeader: (N) => `Вы прошли необходимый инструктаж для подготовки ребёнка к преодолению опасностей в городе и дома! За время прохождения теста вы допустили ${N} ошибок.`,
+            getResultDescription: () => 'Говорить с ребёнком о мерах осторожности, правилах поведения в опасных ситуациях и учесть все детали сложно, поэтому запишитесь на наш вебинар: эксперты подробно расскажут о безопасном передвижении по городу, правилах общения с незнакомыми и решении бытовых проблем.',
+        },
+        questions: []
     },
     child: {
-        img: '',
-        background: 'person-child', // можно через css класс
-        // introText: '', // поставил questionChild0
-        resultText1: 'Поздравляем с прохождением испытания! Ты сам преодолел путь из школы до дома и дождался родителей.',
-        resultText2: `За это время ты потратил ${N} жизней в нашем квесте. Неплохой результат, но можно подготовиться ещё лучше! Чтобы избежать всех опасностей в реальном мире, запишитесь на наш вебинар для родителей: эксперты подробно расскажут о безопасном передвижении по городу, правилах общения с незнакомыми и решении бытовых проблем.`,
-        questions: [
-            questionChild0,
-            questionChild1,
-            questionChild2,
-            questionChild3,
-            questionChild4,
-            questionChild5,
-            questionChild6,
-            questionChild7,
-            questionChild8,
-            questionChild9,
-            questionChild10,
-            questionChild11,
-            questionChild12,
-        ]
+        [INTRO_STEP]: {
+            className: 'person person-child',
+            img: 'img/child-intro.png',
+            description: 'Самостоятельно преодолеть путь от школы до дома не так просто, как кажется на первый взгляд. Тебя могут поджидать опасности на дорогах, в общении с незнакомцами и даже дома. Пройди наш квест, чтобы узнать, как ты справишься с опасными ситуациями в реальной жизни!'
+        },
+        question: {
+            className: 'person person-child person-question',
+        },
+        [RESULT_STEP]: {
+            className: 'person person-child person-congratulations',
+            img: 'img/result.png',
+            getResultHeader: () => 'Поздравляем с прохождением испытания! Ты сам преодолел путь из школы до дома и дождался родителей.',
+            getResultDescription: (N) => `За это время ты потратил ${N} жизней в нашем квесте. Неплохой результат, но можно подготовиться ещё лучше! Чтобы избежать всех опасностей в реальном мире, запишитесь на наш вебинар для родителей: эксперты подробно расскажут о безопасном передвижении по городу, правилах общения с незнакомыми и решении бытовых проблем.`,
+        },
+        questions: []
     }
 };
 
+const loadQuestions = () => {
+    const p1 = fetch('./child-questions.json').then(r => r.json()).then((json) => {
+        questions.child.questions = json;
+    });
+    const p2 = fetch('./parent-questions.json').then(r => r.json()).then((json) => {
+        questions.parent.questions = json;
+    });
+    return Promise.all([p1, p2]);
+}
+
 const questStatus = {
-    role: 'parent',
-    currentQuestion: 0,
+    role: null,
+    currentQuestion: null,
     mistakes: 0,
 }
 
-const getCurrentQuestion = () => {
-    const roleQuestions = questions[questStatus.role];
-    const question = roleQuestions[nextIndex];
-    return question;
+const getQuestionElement = (i, label) => {
+    const fieldset = document.createElement('fieldset');
+    fieldset.innerHTML = `
+        <input type="radio" class="input visually-hidden" name="question" id="option${i}"/>
+        <label for="option${i}" class="label"></label>
+`;
+    fieldset.querySelector('label').textContent = label;
+    return fieldset;
 }
 
 const changeMarkup = () => {
-    const question = getCurrentQuestion()
-    // todo
-    // change img
-    // change text
-}
+    const {mistakes, role, currentQuestion} = questStatus;
+    let content = {
+        className: '',
+        header: '',
+        image: '',
+        description: '',
+    }
+    switch (currentQuestion) {
+        case ENTER_STEP:
+            content = questions[ENTER_STEP];
+            fields.classList.add(content.questionClassName);
+            fields.removeAttribute('hidden');
+            fields.innerHTML = content.questionMarkup;
+            prevBtn.setAttribute('hidden', 'true');
+            break;
+        case INTRO_STEP:
+            content = questions[role][INTRO_STEP];
+            fields.classList.remove(questions[ENTER_STEP].questionClassName);
+            fields.setAttribute('hidden', 'true');
+            prevBtn.removeAttribute('hidden');
+            fields.innerHTML = '';
+            break;
+        case RESULT_STEP:
+            content = questions[role][RESULT_STEP];
+            content.header = content.getResultHeader(mistakes);
+            content.description = content.getResultDescription(mistakes);
+            prevBtn.setAttribute('hidden', 'true');
+            fields.setAttribute('hidden', 'true');
+            fields.innerHTML = '';
+            nextBtn.insertAdjacentHTML('afterend', '<a href="#rec281800224" class="next-link">записаться</a>');
+            nextBtn.style.display = 'none';
+            break;
+        default:
+            content = questions[role].questions[currentQuestion]
+            content.className = questions[role].question.className;
+            const fr = document.createDocumentFragment()
+            content.values.forEach((label, i) => {
+                fr.append(getQuestionElement(i, label));
+            });
+            fields.innerHTML = '';
+            fields.append(fr);
+            fields.removeAttribute('hidden');
+    }
+    section.className = `quiz ${content.className}`;
+    if (content.header) {
+        header.textContent = content.header;
+        header.removeAttribute('hidden');
+    } else {
+        header.setAttribute('hidden', 'true');
+    }
 
-const changeQuestion = (nextIndex) => {
-    questStatus.currentQuestion = nextIndex;
+    if (content.img) {
+        image.setAttribute('src', content.img);
+        image.removeAttribute('hidden');
+    } else {
+        image.setAttribute('hidden', 'true');
+    }
+
+    if (content.description) {
+        description.textContent = content.description;
+        description.removeAttribute('hidden');
+    } else {
+        description.setAttribute('hidden', 'true');
+    }
+
+    const inputs = fields.querySelectorAll('input');
+    if (inputs.length > 0) {
+        nextBtn.setAttribute('disabled', 'true');
+    } else {
+        nextBtn.removeAttribute('disabled');
+    }
+    inputs.forEach((input) => {
+        const listener = () => {
+            nextBtn.removeAttribute('disabled');
+            input.removeEventListener('click', listener);
+        }
+        input.addEventListener('click', listener);
+    });
+};
+
+const checkAnswer = () => {
+    const {role, currentQuestion} = questStatus;
+    switch (currentQuestion) {
+        case ENTER_STEP:
+            questStatus.role = Array.from(document.querySelectorAll('[name=person]')).reduce((value, input) => {
+                return input.checked ? input.id : value;
+            }, '');
+            return true;
+        case null:
+        case INTRO_STEP:
+            return true;
+        default:
+            const answer = Array.from(document.querySelectorAll('[name=question]')).reduce((value, input, index) => {
+                return input.checked ? index : value;
+            }, 0);
+            return answer === questions[role].questions[currentQuestion].answer;
+    }
+};
+
+const showModal = (modalEl) => {
+    if (modalEl.classList.contains('visually-hidden')) {
+        modalEl.classList.remove('visually-hidden');
+    }
+};
+
+const hideModal = (modalEl) => {
+    if (!modalEl.classList.contains('visually-hidden')) {
+        modalEl.classList.add('visually-hidden');
+    }
+};
+
+const setNextStep = () => {
+    const isCorrect = checkAnswer();
+    const {currentQuestion, role} = questStatus;
+    switch (currentQuestion) {
+        case ENTER_STEP:
+            questStatus.currentQuestion = INTRO_STEP;
+            break;
+        case INTRO_STEP:
+            questStatus.currentQuestion = 0;
+            break;
+        case RESULT_STEP:
+            window.location.hash = REG_FORM_ID;
+            return;
+        case null:
+            questStatus.currentQuestion = ENTER_STEP;
+            break;
+        default:
+            if (isCorrect) {
+                if (currentQuestion < questions[role].questions.length - 1) {
+                    showModal(isCorrect ? modalCorrect : modalWrong);
+                    setTimeout(() => hideModal(modalCorrect), 2000);
+                }
+            } else {
+                showModal(modalWrong);
+                modalComment.textContent = questions[role].questions[currentQuestion].comment;
+            }
+            if (!isCorrect && currentQuestion === 0) {
+                questStatus.currentQuestion = INTRO_STEP;
+            } else if (currentQuestion === questions[role].questions.length - 1) {
+                questStatus.currentQuestion = RESULT_STEP;
+            } else {
+                isCorrect ? questStatus.currentQuestion++ : questStatus.currentQuestion--;
+            }
+            if (!isCorrect) {
+                questStatus.mistakes++;
+            }
+    }
+    changeMarkup();
+};
+
+const setPrevStep = () => {
+    const {currentQuestion, role} = questStatus;
+    switch (currentQuestion) {
+        case INTRO_STEP:
+            questStatus.currentQuestion = ENTER_STEP;
+            break;
+        default:
+            if (currentQuestion === 0) {
+                questStatus.currentQuestion = INTRO_STEP;
+            } else {
+                questStatus.currentQuestion--;
+            }
+    }
     changeMarkup();
 }
 
-const checkAnswer = () => {
-    // todo 
-    return true;
-};
+nextBtn.addEventListener('click', () => setNextStep());
 
-const onRoleClick = () => {
-    questStatus.role = document.querySelector('.role').value; // ??? selector
-    // todo снять disable c кнопки Продолжить
-}
+prevBtn.addEventListener('click', () => setPrevStep());
 
-const onRoleNextClick = () => {
-    changeQuestion(0);
-}
+document.addEventListener('keydown', (e) => {
+    if (e.code === 'Escape') {
+        hideModal(modalCorrect);
+        hideModal(modalWrong);
+    }
+});
 
-const onQuestionNextClick = () => {
-    // todo
-    const isCorrect = checkAnswer();
-    changeQuestion(isCorrect ? questStatus.currentQuestion + 1 : questStatus.currentQuestion - 1);
-}
+document.querySelector('.modal-wrong__btn').addEventListener('click', () => {
+    hideModal(modalWrong);
+});
+
+window.addEventListener('load', () => {
+    loadQuestions()
+        .then(() => {
+            setNextStep();
+        });
+})
