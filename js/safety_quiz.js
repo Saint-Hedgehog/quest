@@ -72,10 +72,10 @@ const questions = {
 };
 
 const loadQuestions = () => {
-    const p1 = fetch('https://tetrika-school.ru/static/json/child-questions.json', {mode: 'no-cors'}).then(r => r.json()).then((json) => {
+    const p1 = fetch('./child-questions.json', {mode: 'no-cors'}).then(r => r.json()).then((json) => {
         questions.child.questions = json;
     });
-    const p2 = fetch('https://tetrika-school.ru/static/json/parent-questions.json', {mode: 'no-cors'}).then(r => r.json()).then((json) => {
+    const p2 = fetch('./parent-questions.json', {mode: 'no-cors'}).then(r => r.json()).then((json) => {
         questions.parent.questions = json;
     });
     return Promise.all([p1, p2]).catch((e) => {
@@ -238,12 +238,12 @@ const setNextStep = () => {
                 showModal(modalWrong);
                 modalComment.textContent = questions[role].questions[currentQuestion].comment;
             }
-            if (!isCorrect && currentQuestion === 0) {
-                questStatus.currentQuestion = INTRO_STEP;
-            } else if (currentQuestion === questions[role].questions.length - 1) {
-                questStatus.currentQuestion = RESULT_STEP;
-            } else {
-                isCorrect ? questStatus.currentQuestion++ : questStatus.currentQuestion--;
+            if (isCorrect) {
+                if (currentQuestion === questions[role].questions.length - 1) {
+                    questStatus.currentQuestion = RESULT_STEP;
+                } else {
+                    questStatus.currentQuestion++;
+                }
             }
             if (!isCorrect) {
                 questStatus.mistakes++;

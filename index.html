@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test quest</title>
 </head>
-<div class="container">
-<link rel="stylesheet" href="https://tetrika-school.ru/s3/static/css/safety_quiz.css">
+<body class="container">
+<link rel="stylesheet" href="./css/safety_quiz.css">
 <section class="quiz">
     <p class="test">ТЕСТ</p>
     <div class="header"></div>
@@ -28,17 +28,20 @@
 <!--  -->
 <section class="modal-correctly visually-hidden">
     <h2>Правильно, молодец!</h2>
-    <img src="https://tetrika-school.ru/s3/static/img/safety_quiz/ok.svg" alt="ок" width="224" height="148">
+    <img src="https://tetrika-school.ru/s3/static/img/safety_quiz/correct.png" alt="ок">
     <p>Продолжай в том же духе!</p>
 </section>
+<div class="overlay"></div>
+
 <!--  -->
 <section class="modal-wrong visually-hidden">
     <h2>К сожалению, нет!</h2>
-    <img src="https://tetrika-school.ru/s3/static/img/safety_quiz/bus.svg" alt="correctly-img" width="195" height="140">
+    <img src="https://tetrika-school.ru/s3/static/img/safety_quiz/wrong.png" alt="correctly-img">
     <p class="comment"></p>
     <button type="button" class="modal-wrong__btn">Вернуться</button>
 </section>
+<div class="overlay"></div>
 
-<script src="https://tetrika-school.ru/s3/static/scripts/safety_quiz.js"></script>
-</div>
+<script src="./js/safety_quiz.js"></script>
+</body>
 </html>
