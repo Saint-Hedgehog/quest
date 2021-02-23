@@ -9,6 +9,7 @@
 .container {
     position: relative;
     max-width: 100vw;
+    min-width: 320px;
     margin: 0;
     padding: 0;
     font-family: "Nunito", "Arial", sans-serif;
@@ -41,11 +42,10 @@ fieldset {
 
 .quiz-alone,
 .person {
-    width: 580px;
-    max-width: 100%;
+    max-width: 580px;
     min-height: 498px;
     margin: 0 auto;
-    padding: 34px 42px 14px 42px;
+    padding: 34px 5.738% 14px;
     background-image: linear-gradient(119.78deg, #9971FF 0%, #FF968F 98.56%);
     border-radius: 10px;
 }
@@ -71,6 +71,11 @@ fieldset {
     letter-spacing: 0.04em;
 }
 
+.image {
+    width: 100%;
+    height: auto;
+}
+
 .quiz-alone p:last-of-type {
     margin: 0;
     margin-bottom: 19px;
@@ -83,15 +88,15 @@ fieldset {
 .quiz-alone__choice {
     display: flex;
     justify-content: space-between;
-    width: 432px;
+    width: 74.743%;
     min-height: 296px;
     margin: 0 auto;
     margin-bottom: 17px;
-    padding: 252px 89px 3px 84px;
-    background-image: url("https://tetrika-school.ru/s3/static/img/safety_quiz/child.png"), url("https://tetrika-school.ru/s3/static/img/safety_quiz/parent.png"), url("https://tetrika-school.ru/s3/static/img/safety_quiz/bagel.png");
+    padding: 252px 15.345% 3px 14.483%;
+    background-image: url("https://tetrika-school.ru/s3/static/img/safety_quiz/bagel.png");
     background-repeat: no-repeat;
-    background-position: 77px 48px, 176px 14px, 66px 14px;
-    background-size: 81px 196px, 243px 243px, 283px 248px;
+    background-position: left 44% top 14px;
+    background-size: 283px 248px;
     border: 1px solid #FFFFFF;
     border-radius: 10px;
 }
@@ -103,6 +108,7 @@ fieldset {
 .quiz-alone__child-link,
 .quiz-alone__parent-link,
 .prev-link {
+    position: relative;
     padding: 7px 17px 7px 18px;
     font-family: "IBM Plex Sans", "Verdana", sans-serif;
     font-style: normal;
@@ -117,6 +123,32 @@ fieldset {
     border-radius: 266px;
     letter-spacing: 1.05263px;
     outline: 0;
+}
+
+.quiz-alone__child-link::before {
+    position: absolute;
+    display: block;
+    content: "";
+    top: -208px;
+    left: -7px;
+    width: 81px;
+    height: 196px;
+    background-image: url("https://tetrika-school.ru/s3/static/img/safety_quiz/child.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.quiz-alone__parent-link::before {
+    position: absolute;
+    display: block;
+    content: "";
+    top: -242px;
+    left: -13px;
+    width: 100px;
+    height: 243px;
+    background-image: url("https://tetrika-school.ru/s3/static/img/safety_quiz/parent.png");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .prev-link:hover,
@@ -249,7 +281,7 @@ fieldset {
 
 .person .nav {
     justify-content: space-around;
-    padding: 0 33px;
+    padding: 0 5.69%;
 }
 
 .person-parent .nav {
@@ -309,7 +341,7 @@ fieldset {
 .person-question label::before {
     content: "";
     flex: 0 0 20px;
-    align-self: flex-start;
+    align-self: center;
     height: 20px;
     margin-right: 10px;
     background-color: transparent;
@@ -320,7 +352,6 @@ fieldset {
 .person-question label::after {
     content: "";
     position: absolute;
-    top: 4px;
     left: 4px;
     width: 12px;
     height: 12px;
@@ -348,7 +379,7 @@ fieldset {
 
 .modal-correctly,
 .modal-wrong {
-    position: absolute;
+    position: fixed;
     z-index: 1;
     top: 115px;
     left: 50%;
@@ -450,4 +481,29 @@ fieldset {
     font-size: 7.89474px;
     line-height: 11px;
     text-align: center;
+}
+
+@media (max-width: 525px) {
+    .quiz-alone__choice {
+        width: 100%;
+    }
+
+    .person {
+        padding: 34px 32px 17px;
+    }
+
+    .person .nav {
+        justify-content: space-between;
+        padding: 0;
+    }
+
+    .modal-correctly,
+    .modal-wrong {
+        width: 68.355%;
+    }
+
+    .modal-wrong {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
 }
