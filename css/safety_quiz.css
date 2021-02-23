@@ -43,7 +43,6 @@ fieldset {
 .quiz-alone,
 .person {
     max-width: 580px;
-    min-height: 498px;
     margin: 0 auto;
     padding: 34px 5.738% 14px;
     background-image: linear-gradient(119.78deg, #9971FF 0%, #FF968F 98.56%);
@@ -373,6 +372,7 @@ fieldset {
     background: rgba(0, 0, 0, 0.2);
 }
 
+.modal-correctly:not(.visually-hidden) + .overlay,
 .modal-wrong:not(.visually-hidden) + .overlay {
     display: block;
 }
@@ -489,7 +489,7 @@ fieldset {
     }
 
     .person {
-        padding: 34px 32px 17px;
+        padding: 32px;
     }
 
     .person .nav {
