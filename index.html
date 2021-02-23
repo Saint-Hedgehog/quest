@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test quest</title>
-    <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="container">
+<link rel="stylesheet" href="https://tetrika-school.ru/s3/static/css/safety_quiz.css">
 <section class="quiz">
     <p class="test">ТЕСТ</p>
     <div class="header"></div>
@@ -28,17 +28,20 @@
 <!--  -->
 <section class="modal-correctly visually-hidden">
     <h2>Правильно, молодец!</h2>
-    <img src="img/ok.svg" alt="ок" width="224" height="148">
+    <img class="image" src="https://tetrika-school.ru/s3/static/img/safety_quiz/correct.png" alt="ок" width="224" height="148">
     <p>Продолжай в том же духе!</p>
 </section>
+<div class="overlay"></div>
+
 <!--  -->
 <section class="modal-wrong visually-hidden">
     <h2>К сожалению, нет!</h2>
-    <img src="img/bus.svg" alt="correctly-img" width="195" height="140">
+    <img class="image" src="https://tetrika-school.ru/s3/static/img/safety_quiz/wrong.png" alt="correctly-img" width="285" height="130">
     <p class="comment"></p>
     <button type="button" class="modal-wrong__btn">Вернуться</button>
 </section>
+<div class="overlay"></div>
 
-<script src="js/index.js"></script>
+<script src="https://tetrika-school.ru/s3/static/scripts/safety_quiz.js"></script>
 </body>
 </html>
